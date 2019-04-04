@@ -1,0 +1,29 @@
+<div class="jumbotron bg-info title" style="padding: 45px 0px">
+  <h2 class="text-center">
+    To Do List (App Angular)
+  </h2>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" #itemTitle id="input">
+  <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+    <button class="input-group btn btn-info" id="btn"><i class="fa fa-plus-circle fa-2x"></i></button>
+  </div>
+</div>
+
+<div class="listHeading">
+  <h2>Tasks</h2>
+</div>
+<div style="margin: 5px 0px">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of toDoListArray">
+      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="eventCheck(item.$key,item.isChecked)">
+        <i class="fa fa-lg pull-left" [ngClass]="item.isChecked?'fal fa-check-circle':'fa-circle-thin'"></i>
+      </span>
+      {{item.title}}
+      <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+        <i class="fa fa-trash-o fa-lg"> </i>
+      </span>
+    </li>
+  </ul>
+</div>
